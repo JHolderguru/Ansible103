@@ -46,3 +46,34 @@ free -m
 ```
 ansibledoc -l
 ```
+
+
+#### 4. keeping the module file in the /temp nodes.
+#### every adhoc commad is kept temporarily in the .ansible/temp folder
+```
+ANSIBLE_KEEP_REMOTE_FILES=1 ansible all -m shell -a "uptime"
+
+```
+
+#### 5.Copying Files from Engine to Nodes.
+##### -using copy module
+```
+ansible databases -m copy -a "src=/source/file/path dest=/dest/location"
+ansible databases -m copy -a "src=./hosts dest=dest/temp/"
+
+#creating content on remote Nodes
+ansible databases -m copy -a "content='hello this is test content' dest=dest/temp/hello.txt"
+
+#Updating the file overwrites it but to keep the previous file as a back up
+#creating content on remote Nodes
+ansible databases -m copy -a "content='hello this is test content' dest=dest/temp/hello.txt backup=yes"
+
+#Copy into new DIR
+ansible databases -m copy -a "content='This is a file in the home dir' dest=/home/ansadmin/db.conf"
+
+#verify ssh ipadress
+#navigate to dir
+
+
+
+```

@@ -10,11 +10,30 @@ uptime
 free -m
 
 ```
-#### 1. Shell script - you can combined the above Commmands in a shell script file.
+#### 1. Shell script - you can combined the above Commands in a shell script file.
 
 cat multi_task.sh
 ```
 uptime
 free -m
+
+```
+
+#### 2.uptime and memory playbook.yml
+
+```yml
+---
+ - name: Finding uptime and free ram
+   hosts: all
+   shell: uptime
+   register: up_time
+ - debug:
+     var:up_time.stdout_lines
+ - name: Finding Ram info
+   shell: free -m
+   register: ram_info
+ - debug:
+     var:up_time.stdout_lines
+
 
 ```

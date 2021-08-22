@@ -37,5 +37,10 @@ free -m
  - debug:
      var:up_time.stdout_lines
 
+```
 
+#### 3. To see other modules apart from ' shell module'
+
+```
+ansibledoc -l
 ```

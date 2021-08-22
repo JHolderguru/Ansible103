@@ -25,6 +25,8 @@ free -m
 ---
  - name: Finding uptime and free ram
    hosts: all
+   tasks:
+ - name: Finding uptime
    shell: uptime
    register: up_time
  - debug:

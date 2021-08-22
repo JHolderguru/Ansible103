@@ -9,6 +9,8 @@ uptime
 
 free -m
 
+syntax:
+ansible [-i dev_inv] servers:databases -m module [-a arg_value]
 ```
 #### 1. Shell script - you can combined the above Commands in a shell script file.
 

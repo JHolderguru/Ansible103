@@ -84,6 +84,23 @@ ansible databases -m fetch -a "src=/source/file/path dest=/dest/location"
 
 #Copying the same from different servers/databases
 
-ansible servers -m fetch -a "src=/home/ansadmin/db.conf dest=./demo/{{inventroy_hostname}}_db.conf"
+ansible servers -m fetch -a "src=/home/ansadmin/db.conf dest=./demo/{{inventroy_hostname}}_db.conf flat=yes"
 
+```
+
+
+#### 7. Create/Delete Dir
+#### Syntax
+```
+#touch
+#file
+ansible databases -m file -a "path=/home/ansadmin/demo.txt state=touch"
+
+
+ansible databases -m file -a "path=/tmp/hello.txt state=touch"
+
+#Create another file with different permissions
+#mode
+
+ansible databases -m file -a "path=/tmp/hello.txt state=touch 'mode=0777'"
 ```

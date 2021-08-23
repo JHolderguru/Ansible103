@@ -72,8 +72,18 @@ ansible databases -m copy -a "content='hello this is test content' dest=dest/tem
 ansible databases -m copy -a "content='This is a file in the home dir' dest=/home/ansadmin/db.conf"
 
 #verify ssh ipadress
-#navigate to dir
+#navigate to DIR
+```
+#### 6.Copying Files from our Nodes to Engine.
+#### -using the Fetch module
 
+```
+ansible [inventory_file] <databases:servers> <module> [-a arguments]
 
+ansible databases -m fetch -a "src=/source/file/path dest=/dest/location"
+
+#Copying the same from different servers/databases
+
+ansible servers -m fetch -a "src=/home/ansadmin/db.conf dest=./demo/{{inventroy_hostname}}_db.conf"
 
 ```

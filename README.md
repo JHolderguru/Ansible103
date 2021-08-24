@@ -172,7 +172,8 @@ chmod 755 git_httpv.fact
 ansible all -m file -a "path=/etc/ansible/facts.d state=directory" -b
 
 #Copy script to remote Nodes
-ansible all -m copy -a "src=/etc/ansible/facts.d/git_httpv.fact dest=/etc/ansible/facts.d/git_httpv mode='0755'" -b
+ansible all -m copy -a "src=/etc/ansible/facts.d/git_httpv.fact dest=/etc/ansible/facts.d/git_httpv.fact mode='0755'" -b
 
-#Collecting the Custom fact
+#Collecting the Custom Facts
+ansible all -m setup -a "filter=ansible_local"
 ```

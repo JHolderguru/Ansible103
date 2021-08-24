@@ -103,4 +103,30 @@ ansible databases -m file -a "path=/tmp/hello.txt state=touch"
 #mode
 
 ansible databases -m file -a "path=/tmp/hello.txt state=touch 'mode=0777'"
+
+#To remove file
+#absent
+ansible databases -m file -a "path=/tmp/hello.txt state=absent"
+
+#Create a DIR
+#directory
+#ansible databases -m file -a "path=/tmp/hello state=directory"
+```
+
+#### 8. Sudo priviledges on root
+```
+#Providing the acc has been placed on sudoers
+#visudo
+#-b
+ansible databses -m file -a "path=/etc/demo.txt state touch" (will throw an error)
+
+ansible databses -m file -a "path=/etc/demo.txt state touch" -b
+```
+#### 9. Installing a package
+```
+ansible databases:servers -m yum -a "name=git state=present"
+```
+
+
+
 ```

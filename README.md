@@ -124,7 +124,11 @@ ansible databses -m file -a "path=/etc/demo.txt state touch" -b
 ```
 #### 9. Installing a package
 ```
-ansible databases:servers -m yum -a "name=git state=present"
+#Systems: yum
+#apt
+#other states :absent, present, removed, latest
+
+ansible databases:servers -m yum -a "name=git state=present" -b
 ```
 
 

@@ -168,4 +168,11 @@ EOF
 #4 the fact file should have execution.
 chmod 755 git_httpv.fact
 
+#Creating this file on remote notes
+ansible all -m file -a "path=/etc/ansible/facts.d state=directory" -b
+
+#Copy script to remote Nodes
+ansible all -m copy -a "src=/etc/ansible/facts.d/git_httpv.fact dest=/etc/ansible/facts.d/git_httpv mode='0755'" -b
+
+#Collecting the Custom fact
 ```

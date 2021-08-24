@@ -135,6 +135,37 @@ ansible databases:servers -m yum -a "name=git state=present" -b
 ```
 ansible databases -m setup
 #filter by arg_value
+
 ansible databases -m setup -a "filter=ansible_architecture"
+
+#check versions on remote node
+ansible servers -m shell -a "git --version"
+ansible servers -m shell -a "https --version"
+
+
+#To create customs fact of the 2 above
+
+#1. Create Dir /etc/ansible/facts.d
+mkdir facts.d
+
+vi git_httpv.fact
+#2. Inside of facts.d place one or more customs facts files with extensions
+
+#!/bin/bash
+git_ver=$(git --version | awk '{print $3}')
+httpd_ver=$(http -version | awk 'NR==1 {print $3}')
+
+cat << EOF
+{"Git_version": "$git_ver",
+ "httpd_version": $httpd_ver"
+
+}
+EOF
+
+
+
+#3. Should be json.
+#4 the fact file should have execution.
+chmod 755 git_httpv.fact
 
 ```

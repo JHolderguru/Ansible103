@@ -130,7 +130,11 @@ ansible databses -m file -a "path=/etc/demo.txt state touch" -b
 
 ansible databases:servers -m yum -a "name=git state=present" -b
 ```
+#### 10. Gather Facts (sys info)
 
-
+```
+ansible databases -m setup
+#filter by arg_value
+ansible databases -m setup -a "filter=ansible_architecture"
 
 ```
